@@ -19,11 +19,33 @@ function createGrid(size) {
 
         // Hover effect
         square.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = getRandomColor();
+            // Increase the interaction count
+            let count = parseInt(this.getAttribute('data-count') || 0);
+            this.setAttribute('data-count', count + 1);
+
+            if (count === 0) {
+                // First interaction: set a random color
+                this.style.backgroundColor = getRandomColor();
+            } else {
+                // Subsequent interactions: darken the color
+                const currentColor = this.style.backgroundColor;
+                this.style.backgroundColor = darkenColor(currentColor, 10 * (count + 1));
+            }
         });
 
         container.appendChild(square);
     }
+}
+
+function darkenColor(rgbColor, percent) {
+    const regex = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/;
+    const matches = rgbColor.match(regex);
+
+    const r = Math.floor(parseInt(matches[1]) * (1 - percent / 100));
+    const g = Math.floor(parseInt(matches[2]) * (1 - percent / 100));
+    const b = Math.floor(parseInt(matches[3]) * (1 - percent / 100));
+
+    return `rgb(${r}. ${g}, ${b})`;
 }
 
 function getRandomColor() {
