@@ -1,6 +1,18 @@
 body {
     font-family: 'Press Start 2P', cursive;
-    background-color: #f5f5f5;
+    background: linear-gradient(45deg, #f06, #9f6);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 3px 3px #333;
 }
 
 #container {
@@ -8,31 +20,48 @@ body {
     flex-wrap: wrap;
     width: calc(960px + 32px); /* Add border space for 16 squares */
     margin: 20px auto;
-    border: 1px solid black;
-    box-shadow: 4px 4px #888888; /* Add shading for 3d appearance */
+    border: 4px solid black;
+    box-shadow: 10px 10px 20px #555; /* Add shading for 3d appearance */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .square {
     box-sizing: border-box; /* Include border in width and height */
     width: 60px;  /* 960px / 16 squares = 60px */
     height: 60px;
-    border: 1px dotted #ddd; /* dotted border for pixelated look */
-    box-shadow: 2px 2px #888888; /* Add shading for 3d appearance */
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease;
 }
 
 button {
     display: block;
     margin: 20px auto;
-    background-color: #000;
+    background-color: #222;
     color: #fff;
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 16px;
-    border: 4px solid black;
+    border: 4px solid #555;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 4px 4px #888888; /* Add shading for 3d appearance */
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px #000; /* Add shading for 3d appearance */
+    border-radius: 5px;
+    outline: none;
+}
+
+button:active {
+    box-shadow: 2px 2px 0px #000;
+    transform: translate(2px, 2px);
 }
 
 button:hover {
     background-color: #333;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    color: white;
+    text-shadow: 2px 2px #333;
 }
