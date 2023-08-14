@@ -45,7 +45,7 @@ function darkenColor(rgbColor, percent) {
     const g = Math.floor(parseInt(matches[2]) * (1 - percent / 100));
     const b = Math.floor(parseInt(matches[3]) * (1 - percent / 100));
 
-    return `rgb(${r}. ${g}, ${b})`;
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 function getRandomColor() {
