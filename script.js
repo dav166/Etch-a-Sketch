@@ -8,14 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function createGrid(size) {
     const container = document.getElementById('container');
 
-    // Set the square dimensions
-    const squareSize = 960 / size;
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+
 
     for (let i = 0; i < size * size; i++) {
         const square = document.createElement('div');
-        square.classList.add('square');
-        square.style.width = `${squareSize}px`;
-        square.style.height = `${squareSize}px`;
+        square.classList.add('square'); 
 
         // Hover effect
         square.addEventListener('mouseenter', function() {
