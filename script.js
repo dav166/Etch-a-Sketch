@@ -58,7 +58,17 @@ function getRandomColor() {
 }
 
 function resetGrid() {
-    let newSize = parseInt(prompt('Enter the size for the new grid (max 100):', 16));
+    let input = prompt('Enter the size for the new grid (max 100):', 16);
+
+    // Check if Cancel was clicked
+    if (input === null) {
+        console.log("User cancelled the prompt");
+        return;
+    }
+
+    let newSize = parseInt(input);
+    console.log("Entered size:", newSize); // Debugging statement
+
     if (isNaN(newSize) || newSize < 1 || newSize > 100) {
         alert('Please enter a valid number between 1 and 100.');
         return;
@@ -69,7 +79,9 @@ function resetGrid() {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
+    console.log("Old grid cleared"); // Debugging statement
 
     // Create new grid
     createGrid(newSize);
+    console.log("New grid created with size:", newSize); //Debugging statement
 }
