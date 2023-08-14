@@ -29,7 +29,7 @@ function createGrid(size) {
             } else {
                 // Subsequent interactions: darken the color
                 const currentColor = this.style.backgroundColor;
-                this.style.backgroundColor = darkenColor(currentColor, 10 * (count + 1));
+                this.style.backgroundColor = darkenColor(currentColor, 10);
             }
         });
 
