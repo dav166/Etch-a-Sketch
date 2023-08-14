@@ -9,6 +9,7 @@ body {
     width: calc(960px + 32px); /* Add border space for 16 squares */
     margin: 20px auto;
     border: 1px solid black;
+    box-shadow: 4px 4px #888888; /* Add shading for 3d appearance */
 }
 
 .square {
@@ -16,6 +17,7 @@ body {
     width: 60px;  /* 960px / 16 squares = 60px */
     height: 60px;
     border: 1px dotted #ddd; /* dotted border for pixelated look */
+    box-shadow: 2px 2px #888888; /* Add shading for 3d appearance */
 }
 
 button {
@@ -25,9 +27,10 @@ button {
     color: #fff;
     padding: 10px 20px;
     font-size: 16px;
-    border: none;
+    border: 4px solid black;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 4px 4px #888888; /* Add shading for 3d appearance */
 }
 
 button:hover {
