@@ -38,6 +38,8 @@ function createGrid(size) {
 }
 
 function darkenColor(rgbColor, percent) {
+    percent = Math.min(percent, 100); // Ensure percent does not exceed 100%
+    
     const regex = /rgb\((\d+),\s*(\d+),\s*(\d+)\)/;
     const matches = rgbColor.match(regex);
 
