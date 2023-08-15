@@ -23,13 +23,15 @@ h1, button, footer {
     display: grid;
     border-radius: 5px;
     overflow: hidden;
+    background: #333;
 }
 
 .square {
-    box-sizing: border-box; /* Includes border in width and height */
+    box-sizing: border-box;
     border: 1px solid #ddd;
     transition: background-color 0.3s ease;
     border-radius: 3px;
+    background: #ccc;
 }
 
 button {
