@@ -2,44 +2,34 @@ body {
     font-family: 'Press Start 2P', cursive;
     background: linear-gradient(45deg, #f06, #9f6);
     height: 100vh;
-    overflow: hidden;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
+    padding: 10px;
 }
 
-h1 {
-    margin-top: 20px;
-    font-size: 2rem;
-    color: white;
-    text-shadow: 3px 3px #333;
+h1, button, footer {
+    margin: 10px;
+    text-align: center;
 }
 
 #container {
+    gap: 1px;
+    width: 90%;
+    max-width: 960px;
+    height: 70%;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(16, 1fr); /* This will create 16 columns with equal fractional units */
-    grid-template-rows: repeat(16, 1fr); /* This will create 16 rows with equal fractional units */
-    gap: 2px; /* This will provide a 2px gap between grid items */
-    flex-wrap: wrap;
-    width: calc(960px + 2px * 16); /* 2px for each of the 16 square borders */
-    margin: 20px auto;
-    border: 4px solid black;
-    box-shadow: 10px 10px 20px #555; /* Add shading for 3d appearance */
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 1px;
-    height: 80vh; /* Set the containers maximum height to 80% of the viewport height */
-    overflow-y: auto; /* Allow vertical scrolling within the container if needed */
-    max-height: calc(100vh - 250px); /* This subtracts an estimated height for the title, button, footer, and other spacings. Adjust if needed. */
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .square {
-    box-sizing: border-box;
+    box-sizing: border-box; /* Includes border in width and height */
     border: 1px solid #ddd;
     transition: background-color 0.3s ease;
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 button {
@@ -52,7 +42,7 @@ button {
     border: 4px solid #555;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 4px 4px 0px #000; /* Add shading for 3d appearance */
+    box-shadow: 4px 4px 0px #000; 
     border-radius: 5px;
     outline: none;
 }
@@ -67,7 +57,7 @@ button:hover {
 }
 
 footer {
-    margin-top: 20px; /* Add margin to push the footer down */
+    margin-top: 20px;
     color: white;
     text-shadow: 2px 2px #333;
 }

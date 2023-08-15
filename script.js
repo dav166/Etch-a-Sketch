@@ -8,35 +8,51 @@ document.addEventListener('DOMContentLoaded', function() {
 function createGrid(size) {
     const container = document.getElementById('container');
 
-    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    // Clear existing grid
+    container.innerHTML = '';
+
+    // Set grid template
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 
-    const squareSize = container.clientHeight / size; /* Calculate the size for each square */
+    const gap = 1; // Gap size in pixels
+    const border = 1; // Border size in pixels
+    const squareHeight = (container.clientHeight - (size - 1) * gap - size * 2 * border) / size;
 
     for (let i = 0; i < size * size; i++) {
         const square = document.createElement('div');
         square.classList.add('square'); 
-        square.style.width = `${squareSize}px`;
-        square.style.height = `${squareSize}px`;
+        square.style.height = `${squareHeight}px`; // Set the height of the square
 
         // Hover effect
         square.addEventListener('mouseenter', function() {
             // Increase the interaction count
             let count = parseInt(this.getAttribute('data-count') || 0);
-            this.setAttribute('data-count', count + 1);
+            count = Math.min(count + 1, 10); // Limit Interactions to 10
+            this.setAttribute('data-count', count);
 
-            if (count === 0) {
+            if (count === 1) {
                 // First interaction: set a random color
                 this.style.backgroundColor = getRandomColor();
-            } else {
-                // Subsequent interactions: darken the color
-                const currentColor = this.style.backgroundColor;
-                this.style.backgroundColor = darkenColor(currentColor, 10);
-            }
+            } 
+
+            // Subsequent interactions: darken the color
+            const currentColor = this.style.backgroundColor;
+            this.style.backgroundColor = darkenColor(currentColor, count * 10);
         });
 
         container.appendChild(square);
     }
+}
+
+function resizeSquares() {
+    const container = document.getElementById('container');
+    const squares = container.querySelectorAll('.square');
+    const squareSize = container.clientWidth / container.style.gridTemplateColumns.split(' ').length;
+
+    squares.forEach(square => {
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
+    });
 }
 
 function darkenColor(rgbColor, percent) {
