@@ -1,6 +1,6 @@
 body {
     font-family: 'Press Start 2P', cursive;
-    background: linear-gradient(45deg, #f06, #9f6);
+    background: linear-gradient(45deg, #e41, rgb(14, 4, 154));
     height: 100vh;
     margin: 0;
     display: flex;
@@ -28,10 +28,10 @@ h1, button, footer {
 
 .square {
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid #555;
     transition: background-color 0.3s ease;
     border-radius: 3px;
-    background: #ccc;
+    background: #222;
 }
 
 button {

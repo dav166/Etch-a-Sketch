@@ -1,58 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
     createGrid(16);
-
-    const resetButton = document.getElementById('reset');
-    resetButton.addEventListener('click', resetGrid);
+    document.getElementById('reset').addEventListener('click', resetGrid);
 });
 
 function createGrid(size) {
     const container = document.getElementById('container');
-
-    // Clear existing grid
     container.innerHTML = '';
-
-    // Set grid template
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-
-    const gap = 1; // Gap size in pixels
-    const border = 1; // Border size in pixels
-    const squareHeight = (container.clientHeight - (size - 1) * gap - size * 2 * border) / size;
+    const squareHeight = calculateSquareHeight(container, size);
 
     for (let i = 0; i < size * size; i++) {
-        const square = document.createElement('div');
-        square.classList.add('square'); 
-        square.style.height = `${squareHeight}px`; // Set the height of the square
-
-        // Hover effect
-        square.addEventListener('mouseenter', function() {
-            // Increase the interaction count
-            let count = parseInt(this.getAttribute('data-count') || 0);
-            count = Math.min(count + 1, 10); // Limit Interactions to 10
-            this.setAttribute('data-count', count);
-
-            if (count === 1) {
-                // First interaction: set a random color
-                this.style.backgroundColor = getRandomColor();
-            } 
-
-            // Subsequent interactions: darken the color
-            const currentColor = this.style.backgroundColor;
-            this.style.backgroundColor = darkenColor(currentColor, count * 10);
-        });
-
+        const square = createSquare(squareHeight);
         container.appendChild(square);
     }
 }
 
-function resizeSquares() {
-    const container = document.getElementById('container');
-    const squares = container.querySelectorAll('.square');
-    const squareSize = container.clientWidth / container.style.gridTemplateColumns.split(' ').length;
+function calculateSquareHeight(container, size) {
+    const gap = 1; // Gap size in pixels
+    const border = 1; // Border size in pixels
+    return (container.clientHeight - (size - 1) * gap - size * 2 * border) / size;
+}
 
-    squares.forEach(square => {
-        square.style.width = `${squareSize}px`;
-        square.style.height = `${squareSize}px`;
-    });
+function createSquare(height) {
+    const square = document.createElement('div');
+    square.classList.add('square');
+    square.style.height = `${height}px`;
+    square.addEventListener('mouseenter', onSquareHover);
+    return square;
+}
+
+function onSquareHover() {
+    const count = Math.min((parseInt(this.getAttribute('data-count') || 0) + 1), 10);
+    this.getAttribute('data-count', count);
+    this.style.backgroundColor = count === 1 ? getRandomColor() : darkenColor(this.style.backgroundColor, count * 10);
 }
 
 function darkenColor(rgbColor, percent) {
