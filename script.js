@@ -11,10 +11,13 @@ function createGrid(size) {
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 
+    const squareSize = container.clientHeight / size; /* Calculate the size for each square */
 
     for (let i = 0; i < size * size; i++) {
         const square = document.createElement('div');
         square.classList.add('square'); 
+        square.style.width = `${squareSize}px`;
+        square.style.height = `${squareSize}px`;
 
         // Hover effect
         square.addEventListener('mouseenter', function() {
